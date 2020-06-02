@@ -33,7 +33,7 @@ textarea {
 }
 
 
-button {
+.sendbtn {
 	text-decoration: none;
 	border-width: 0px;
 	background-color:#5d8e97;

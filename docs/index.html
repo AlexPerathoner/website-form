@@ -3,6 +3,57 @@
 <head>
 	<link rel="stylesheet" href="style.css">
 	<meta charset="UTF-8">
+
+	<script>
+		function btnClicked() {
+			if(checkDataAndAlert()) {
+				sendData;
+			}
+		}
+		function sendData() {
+			alert('This is a fake send-data function');
+		}
+
+		function checkDataAndAlert() {
+			var correct = true;
+			if(!checkMsg()) { //campi obbligatori vuoti
+				document.getElementById("msglab").innerHTML = '*Message:      <span style="color: red">Fields marked with a (*) are required!</span>';
+				correct = false;
+			}
+			if(!checkName()) { 
+				document.getElementById("fnamelab").innerHTML = '*First name:      <span style="color: red">Fields marked with a (*) are required!</span>';
+				correct = false;
+			}
+			if(!checkReason()) {
+				document.getElementById("reasonlab").innerHTML = '*You are contacting me because:      <span style="color: red">Fields marked with a (*) are required!</span>';
+				correct = false;
+			}
+
+			if(!checkEmail()) {
+				alert("Error! Please insert a valid email address!");
+				correct = false;
+			}
+
+			return correct;
+		}
+
+		function checkMsg() {
+			return document.form.msg.value != "";
+		}
+		function checkName() {
+			return document.form.fname.value != "";
+		}
+		function checkReason() {
+			return document.form.reason.value != "";
+		}
+
+
+		function checkEmail() {
+			return document.form.email.value.includes("@");
+		}
+
+
+	</script>
 </head>
 <body>
 
@@ -27,21 +78,22 @@
 	</p>
 
 	<div class="row form">
-		<form>
-			<label for="fname">*First name:</label><br>
+		<form name="form">
+			<label for="fname" id="fnamelab">*First name:</label><br>
 			<input type="text" id="fname" name="fname"><br>
 
-
-			<p>You are contacting me because:</p>
+			<p id="reasonlab">*You are contacting me because:</p>
 			<input type="radio" id="bugtxt" name="reason" value="bugtxt">
-			<label for="bug">I found a bug in one of yours app!!!</label><br>
+			<label for="bug">I found a bug in one of your apps!!!</label><br>
 			<input type="radio" id="kysstxt" name="reason" value="kysstxt">
-			<label for="kyss">I wanna write you how good you are!</label><br>
+			<label for="kyss">I want to tell you how good you are!</label><br>
 
 			<br>
-			<label for="msg">Message:</label><br>
+			<label for="msg" id="msglab">*Message:</label><br>
 			<textarea type="text" style="width:50%; height: 70px;" id="msg" name="msg"></textarea><br><br>
-			<button class="myButton" onclick="alert('Thanks for you commit')">Submit</button>
+			<label for="email">Your email:</label>
+			<input type="email" id="email" name="email"><br><br>
+			<span class="sendbtn" onclick="btnClicked()">Submit</span>
 
 		</form>
 	</div>
