@@ -3,57 +3,7 @@
 <head>
 	<link rel="stylesheet" href="style.css">
 	<meta charset="UTF-8">
-
-	<script>
-		function btnClicked() {
-			if(checkDataAndAlert()) {
-				sendData;
-			}
-		}
-		function sendData() {
-			alert('This is a fake send-data function');
-		}
-
-		function checkDataAndAlert() {
-			var correct = true;
-			if(!checkMsg()) { //campi obbligatori vuoti
-				document.getElementById("msglab").innerHTML = '*Message:      <span style="color: red">Fields marked with a (*) are required!</span>';
-				correct = false;
-			}
-			if(!checkName()) { 
-				document.getElementById("fnamelab").innerHTML = '*First name:      <span style="color: red">Fields marked with a (*) are required!</span>';
-				correct = false;
-			}
-			if(!checkReason()) {
-				document.getElementById("reasonlab").innerHTML = '*You are contacting me because:      <span style="color: red">Fields marked with a (*) are required!</span>';
-				correct = false;
-			}
-
-			if(!checkEmail()) {
-				alert("Error! Please insert a valid email address!");
-				correct = false;
-			}
-
-			return correct;
-		}
-
-		function checkMsg() {
-			return document.form.msg.value != "";
-		}
-		function checkName() {
-			return document.form.fname.value != "";
-		}
-		function checkReason() {
-			return document.form.reason.value != "";
-		}
-
-
-		function checkEmail() {
-			return document.form.email.value.includes("@");
-		}
-
-
-	</script>
+	<script src="script.js"></script>
 </head>
 <body>
 
